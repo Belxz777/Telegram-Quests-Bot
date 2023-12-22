@@ -31,10 +31,30 @@ app.use(cors())
         }}) 
         await bot.sendContact(chatId,'8 982 124 9732','Roman Belxz')
             }
-      if(msgText ==='t'){
+      if(msgText ==='/location'){
+        await bot.sendMessage(chatId,'Нажми на кнопку снизу <b> &#128071</b> ',{
+          parse_mode:'HTML',
+          reply_markup:{
+            keyboard :[
+              [{text: 'Определить мою локацию', request_location: true}]
+            ]
+          }
+        })
+            }     
+              if (msg.location) {
+              const latitude = msg.location.latitude;
+        const longitude = msg.location.longitude;
+        console.log(latitude,longitude)
+              // Handle the received location data
+              // You can use this data to provide location-based services or information
+              bot.sendMessage(chatId, `Ваши координаты: ${latitude}, ${longitude}`);
             }
   });
   bot.on("polling_error", console.log);
+  bot.on('location', (msg) => {
+    console.log(msg.location.latitude);
+    console.log(msg.location.longitude);
+  });
    const port = 4500;
 app.listen(port, () => {
   console.log(`Bot is running on ${port}`)
