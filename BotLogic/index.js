@@ -11,6 +11,7 @@ const cors  =require('cors')
 
 app.use(express.json())
 app.use(cors())
+
   const bot = new telegramBot(token, {polling: true});
   app.post(`/bot${token}`, (req, res) => {
       bot.processUpdate(req.body);
@@ -22,13 +23,6 @@ app.use(cors())
     const msgText = msg.text    
     if(msgText ==='/start'){
      await bot.sendMessage(chatId,"Привет ,это бот который будет давать задания на определенной локации  ")
-     await axios.get('https://bot-logic-loy97lmt4-belxz777s-projects.vercel.app/')
-     .then(response => {
-       console.log('Успешный запрос к указанной странице:', response.data);
-     })
-     .catch(error => {
-       console.error('Ошибка при выполнении запроса к указанной странице:', error);
-     });
     }
     if(msgText ==='/usage'){
      await bot.sendMessage(chatId,"Что бы начать пользоваться приложением нажмите на кнопку   <b> &#128071</b> ",{parse_mode:'HTML'})
@@ -66,14 +60,11 @@ app.use(cors())
     console.log(msg.location.latitude);
     console.log(msg.location.longitude);
   });
-app.get('/',(req,res)=>{
-  res.send('Welcome')
-})
    const port = 4500;
 app.listen(port, () => {
   console.log(`Bot is running on ${port}`)
 })
-const webhookUrl = 'https://bot-logic-ough057wc-belxz777s-projects.vercel.app/bot' + token;
+const webhookUrl = 'https://bot-logic.vercel.app/bot' + token;
 bot.setWebHook(webhookUrl).then(() => {
   console.log(`Webhook set to: ${webhookUrl}`);
 }).catch((error) => {
