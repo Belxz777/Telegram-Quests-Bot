@@ -55,6 +55,10 @@ app.use(cors())
     console.log(msg.location.latitude);
     console.log(msg.location.longitude);
   });
+  app.get('/api/', (req, res) => {
+res.send('hello')
+  }
+    )
    const port = 4500;
 app.listen(port, () => {
   console.log(`Bot is running on ${port}`)
