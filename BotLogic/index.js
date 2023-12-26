@@ -1,20 +1,24 @@
-require('dotenv').config()
+
 const express = require('express')
 const app = express()
+//all
+require('dotenv').config()
 const telegramBot = require('node-telegram-bot-api');
-const token = "6872431706:AAHaBvKWq2y1Ba1mNzJ1hGyBIyfMPdFe4os"
+const token = process.env.TOKEN
 console.log(token)
 const cors  =require('cors')
+
 app.use(express.json())
 app.use(cors())
   const bot = new telegramBot(token, {polling:false});
   const webhookUrl = 'https://bot-logic.vercel.app/bot6872431706:AAHaBvKWq2y1Ba1mNzJ1hGyBIyfMPdFe4o';
+
+  // Устанавливаем вебхук
   bot.setWebHook(webhookUrl).then(() => {
     console.log('Вебхук успешно установлен');
   }).catch((error) => {
     console.error('Ошибка при установке вебхука:', error);
   });
-  // Устанавливаем вебхук
   
 
   bot.on('message',async  (msg) => {
