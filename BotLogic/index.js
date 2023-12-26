@@ -10,7 +10,7 @@ const cors  =require('cors')
 
 app.use(express.json())
 app.use(cors())
-  const bot = new telegramBot(token, {polling:true});
+  const bot = new telegramBot(token, {polling:false});
   const webhookUrl = 'https://bot-logic.vercel.app/bot6872431706:AAHaBvKWq2y1Ba1mNzJ1hGyBIyfMPdFe4o';
 
   // Устанавливаем вебхук
