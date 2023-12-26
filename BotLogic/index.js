@@ -10,7 +10,7 @@ const cors  =require('cors')
 
 app.use(express.json())
 app.use(cors())
-  const bot = new telegramBot(token, {polling:false});
+  const bot = new telegramBot(token, {polling:true});
   const webhookUrl = 'https://bot-logic.vercel.app/bot6872431706:AAHaBvKWq2y1Ba1mNzJ1hGyBIyfMPdFe4o';
 
   // Устанавливаем вебхук
@@ -19,8 +19,6 @@ app.use(cors())
   }).catch((error) => {
     console.error('Ошибка при установке вебхука:', error);
   });
-  
-
   bot.on('message',async  (msg) => {
     const chatId = msg.chat.id;
     const msgText = msg.text    
@@ -55,7 +53,20 @@ app.use(cors())
         console.log(latitude,longitude)
               // Handle the received location data
               // You can use this data to provide location-based services or information
-              bot.sendMessage(chatId, `Ваши координаты: ${latitude}, ${longitude}`);
+              bot.sendMessage(chatId, `Ваши координаты: ${latitude}, ${longitude} `,{
+                reply_markup:{
+                  inline_keyboard: [
+                    {
+                      text: 'Зайти в приложение с текущей локацией',
+                      web_app: {
+                        url: 'https://kvestor-qhf33gc1v-belxz777s-projects.vercel.app',
+                        
+                        
+                      }
+                    }
+                  ]
+              }});
+            
             }
   });
   bot.on("polling_error", console.log);
