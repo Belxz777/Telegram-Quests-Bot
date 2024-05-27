@@ -19,16 +19,16 @@ app.use(cors())
     const chatId = msg.chat.id;
     const msgText = msg.text    
     if(msgText ==='/start'){
-     await bot.sendMessage(chatId,"Привет ,это бот который будет давать задания на определенной локации  ")
+     await bot.sendMessage(chatId,"Привет ,это бот который будет давать задания на велоквест. ")
     }
     if(msgText ==='/usage'){
-     await bot.sendMessage(chatId,"Что бы начать пользоваться приложением нажмите на кнопку   <b> &#128071</b> ",{parse_mode:'HTML'})
+     await bot.sendMessage(chatId,"Что бы начать пользоваться приложением нажмите на кнопку ниже   <b> &#128071</b> ",{parse_mode:'HTML'})
     }
     if(msgText ==='/help'){
-       await bot.sendMessage(chatId,'По всем проблемам и преложениям писать сюда', {
+       await bot.sendMessage(chatId,'По всем проблемам писать сюда', {
         "reply_markup": {
             "inline_keyboard":[
-              [{text:'Админ',url:'https://t.me/Belxz999'}]
+              [{text:'Админ',url:'https://t.me/gollywoodik'}]
           ]
         }}) 
   
